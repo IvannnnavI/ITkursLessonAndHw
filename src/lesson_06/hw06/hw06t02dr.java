@@ -1,0 +1,27 @@
+package lesson_06.hw06;
+
+import java.util.Scanner;
+
+public class hw06t02dr {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите любое четырёхзначное число:");
+        String numbStr = scanner.nextLine();
+
+        // проверка на 4- ёх значность.
+        if (numbStr.length() !=4)
+        {
+            System.out.println("Ошибка!!! Число не является 4-ёх значным. Программа завершена!");
+            return;
+        }
+
+        int sum1 = (numbStr.charAt(0)  + (numbStr.charAt(1)));
+        int sum2 = (numbStr.charAt(2) + (numbStr.charAt(3)));
+        if (sum1 == sum2) {
+            System.out.println(numbStr + " - счастливое число!");
+        } else {
+            System.out.println(numbStr + " - несчастливое число!");
+        }
+
+    }
+}
