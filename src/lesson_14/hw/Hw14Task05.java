@@ -1,5 +1,5 @@
 package lesson_14.hw;
-
+//Реализуйте метод sumOfArray (сумма элементов массива), который получает на вход массив и определяет сумму его элементов.
 public class Hw14Task05 {
     public static void main(String[] args) {
         int[] numArray = {0, 1, 2, 3, 4, 5, 6, -5, -3, 8};
