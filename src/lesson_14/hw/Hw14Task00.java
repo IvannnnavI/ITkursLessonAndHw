@@ -15,6 +15,12 @@ public class Hw14Task00 {
     }
 
     public static String toUppLetters(String small) {
+        //  Проверки ! всегда помнить о проверках входящих аргументов!
+        // Перебрать строку, если встречается нижний регистр, вернуть верхний.
+        if (small == null) return null;
+        // преобразовать строку в массив char
+        // Перебрать символы . Если нужно на соотвествующий символ в верхнем регистре.
+        // Сформировать из массива char строку и вернуть из метода.
         String result = "";
         for (char lett : small.toCharArray()) {
             if (lett >= 'a' && lett <= 'z') {
