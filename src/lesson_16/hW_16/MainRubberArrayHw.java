@@ -47,7 +47,7 @@ public class MainRubberArrayHw {
 
         //Конструктор, принимающий в себя обычный массив и создающий RubberArray с такими де значениями
 
-        int[] initialValues = {78,86,96};
+        int[] initialValues = {78, 86, 96};
         RubberArrayHw ra2 = new RubberArrayHw(initialValues);
         System.out.println("Новый RuberArray с другими значениями" + ra2);
         System.out.println("=============================================>\n");
@@ -58,15 +58,14 @@ public class MainRubberArrayHw {
         System.out.println("=============================================>\n");
 
         // Замена значения по индексу (есть индекс и новое значение)
-        ra2.replaceAt(0,100);
+        ra2.replaceAt(0, 100);
         System.out.println("Массив после замены по значению: " + ra2);
-        ra.replaceAt(10,900);
+        ra.replaceAt(10, 900);
         System.out.println("=============================================>\n");
 
         //Замена значения по значению (есть старое и новое значение)
-        ra2.replace(100,110);
+        ra2.replace(100, 110);
         System.out.println("Массив после замены всех элементов со значением 100 на значение 110: " + ra2);
-
 
 
     }
