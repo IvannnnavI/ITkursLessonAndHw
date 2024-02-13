@@ -1,6 +1,8 @@
-package lesson_20.hW_20;
+package lesson_20.hW_20.Task_2;
 
-public class WashingVacuumCleaner extends VacuumCleaner{
+import lesson_20.hW_20.Task_2.VacuumCleaner;
+
+public class WashingVacuumCleaner extends VacuumCleaner {
     private int waterTankVolume;
 
     public WashingVacuumCleaner(int power, String dustCollectionType, int waterTankVolume) {

@@ -1,4 +1,4 @@
-package lesson_20.hW_20;
+package lesson_20.hW_20.Task_2;
 
 public class RobotVacuumCleaner extends VacuumCleaner {
     private int batteryLife;

@@ -1,4 +1,6 @@
-package lesson_20.hW_20;
+package lesson_20.hW_20.Task_2;
+
+import lesson_20.hW_20.Task_2.GameCharacter;
 
 public class Warrior extends GameCharacter {
     private int armor;

@@ -1,4 +1,4 @@
-package lesson_20.hW_20;
+package lesson_20.hW_20.Task_1;
 
 import lesson_20.Vehicle;
 
