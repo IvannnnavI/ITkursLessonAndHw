@@ -6,14 +6,16 @@ public class Bus extends Vehicle {
 
     private int capacity;
     int countPassengers;
-    int totalPassengersTransported;
+    private int totalPassengersTransported;
 
 
     public int getCountPassengers() {
+
         return countPassengers;
     }
 
     public int getTotalPassengersTransported() {
+
         return totalPassengersTransported;
     }
     // Сеттер не нужен. Так как не стоит задача предоставить возможность
