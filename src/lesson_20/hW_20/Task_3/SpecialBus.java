@@ -17,15 +17,18 @@ public class SpecialBus extends Bus {
         // пассажира.
         // велика
         // есть на борт.
-        // нет никого не садим
+        // нет никого не садим if (bicyclesCount < bicyclePlaces && takePassenger())
+
         if (bicyclesCount < bicyclePlaces) {
-            bicyclesCount++;
-            return true;
-        }else {
-            return false;
-
+            boolean isPassengerEntry = takePasseger();
+            if (isPassengerEntry){
+                bicyclesCount++;
+                System.out.println("Cели в автобус"+getModel());
+                return true;
+            }
         }
-
+        System.out.println("Не поместились: " + getModel());
+        return false;
     }
     public int getBicyclePlaces() {
         return bicyclePlaces;

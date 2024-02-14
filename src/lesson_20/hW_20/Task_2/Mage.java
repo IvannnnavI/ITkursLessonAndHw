@@ -5,10 +5,11 @@ import lesson_20.hW_20.Task_2.GameCharacter;
 public class Mage extends GameCharacter {
     private int magicPower;
 
-    public Mage(String name, int strength, int magicPower) {
-        super(name, strength);
+    public Mage(String name, int strength, int inventoryCapacity, int magicPower) {
+        super(name, strength, inventoryCapacity);
         this.magicPower = magicPower;
     }
+
     public int getMagicPower() {
         return magicPower;
     }

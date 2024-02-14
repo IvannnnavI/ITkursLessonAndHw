@@ -5,11 +5,11 @@ import lesson_20.hW_20.Task_2.GameCharacter;
 public class Warrior extends GameCharacter {
     private int armor;
 
-
-    public Warrior(String name, int strength, int armor) {
-        super(name, strength);
+    public Warrior(String name, int strength, int inventoryCapacity, int armor) {
+        super(name, strength, inventoryCapacity);
         this.armor = armor;
     }
+
     public int getArmor() {
         return armor;
     }
