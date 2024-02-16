@@ -20,4 +20,12 @@ public class Human {
     void printRestTime() {
         System.out.println("Мне нужно отдохнуть после пробежки - " + restTime + " минут.");
     }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "speed=" + speed +
+                ", restTime=" + restTime +
+                '}';
+    }
 }
