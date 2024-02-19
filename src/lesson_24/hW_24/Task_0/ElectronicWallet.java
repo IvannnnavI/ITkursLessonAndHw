@@ -1,6 +1,7 @@
 package lesson_24.hW_24.Task_0;
 
-public class ElectronicWallet implements PaymentSystem {private double balance;
+public class ElectronicWallet implements PaymentSystem {
+    private double balance; // Предполагаем, что баланс в BTC для упрощения
     private String currency = "BTC";
 
     public ElectronicWallet(double initialBalance) {
@@ -9,34 +10,32 @@ public class ElectronicWallet implements PaymentSystem {private double balance;
 
     @Override
     public void transferMoney(PaymentSystem recipient, double amount, String currency) {
-        double amountInWalletCurrency = CurrencyExchange.convert(amount, currency, this.currency);
-        if (amountInWalletCurrency > balance) {
-            System.out.println("Электронный кошелек: Недостаточно средств для перевода.");
-            return;
+        double amountInBTC = CurrencyExchange.convert(amount, currency, this.currency);
+        if (amountInBTC <= balance) {
+            balance -= amountInBTC;
+            recipient.depositMoney(amountInBTC, this.currency);
+            System.out.println("Переведено " + amountInBTC + " " + this.currency);
+        } else {
+            System.out.println("Недостаточно средств для перевода.");
         }
-        balance -= amountInWalletCurrency;
-        double amountInRecipientCurrency = CurrencyExchange.convert(amountInWalletCurrency, this.currency, currency);
-        recipient.depositMoney(amountInRecipientCurrency, currency);
-        System.out.println("Электронный кошелек: Переведено " + amount + " " + currency);
     }
 
     @Override
     public void withdrawMoney(double amount, String currency) {
-        double amountInWalletCurrency = CurrencyExchange.convert(amount, currency, this.currency);
-        if (amountInWalletCurrency > balance) {
-            System.out.println("Электронный кошелек: Недостаточно средств для снятия.");
-            return;
+        double amountInBTC = CurrencyExchange.convert(amount, currency, this.currency);
+        if (amountInBTC <= balance) {
+            balance -= amountInBTC;
+            System.out.println("Снято " + amountInBTC + " " + this.currency);
+        } else {
+            System.out.println("Недостаточно средств для снятия.");
         }
-        balance -= amountInWalletCurrency;
-        System.out.println("Электронный кошелек: Снято " + amount + " " + currency);
     }
 
     @Override
     public void depositMoney(double amount, String currency) {
-        double amountInWalletCurrency = CurrencyExchange.convert(amount, currency, this.currency);
-        balance += amountInWalletCurrency;
-        System.out.println("После пополнения на " + amount + " " + currency + ", баланс кошелька: " + balance + " " + this.currency);
-
+        double amountInBTC = CurrencyExchange.convert(amount, currency, this.currency);
+        balance += amountInBTC;
+        System.out.println("Пополнено " + amountInBTC + " " + this.currency + ". Новый баланс: " + balance + " " + this.currency);
     }
 
     @Override

@@ -1,43 +1,40 @@
 package lesson_24.hW_24.Task_0;
 
-public class BankAccount implements PaymentSystem {
-    private double balance;
+public class BankAccount implements PaymentSystem {private double balance; // Баланс в EUR для упрощения
     private String currency = "EUR";
 
-    public BankAccount(double balance) {
-        this.balance = balance;
+    public BankAccount(double initialBalance) {
+        this.balance = initialBalance;
     }
 
     @Override
     public void transferMoney(PaymentSystem recipient, double amount, String currency) {
-        double amountInAccCurrency = CurrencyExchange.convert(amount, currency, this.currency);
-        if (amountInAccCurrency > balance) {
+        double amountInEUR = CurrencyExchange.convert(amount, currency, this.currency);
+        if (amountInEUR <= balance) {
+            balance -= amountInEUR;
+            recipient.depositMoney(amountInEUR, this.currency);
+            System.out.println("Переведено " + amountInEUR + " " + this.currency);
+        } else {
             System.out.println("Недостаточно средств для перевода.");
-            return;
         }
-        balance -= amountInAccCurrency;
-        double amountInRecipientCurrency = CurrencyExchange.convert(amountInAccCurrency, this.currency, currency);
-        recipient.depositMoney(amountInRecipientCurrency, currency);
-        System.out.println("Переведено " + amount + " " + currency);
     }
 
     @Override
     public void withdrawMoney(double amount, String currency) {
-        double amountInAccountCurrency = CurrencyExchange.convert(amount, currency, this.currency);
-        if (amountInAccountCurrency > balance) {
+        double amountInEUR = CurrencyExchange.convert(amount, currency, this.currency);
+        if (amountInEUR <= balance) {
+            balance -= amountInEUR;
+            System.out.println("Снято " + amountInEUR + " " + this.currency);
+        } else {
             System.out.println("Недостаточно средств для снятия.");
-            return;
         }
-        balance -= amountInAccountCurrency;
-        System.out.println("Снято " + amount + " " + currency);
     }
 
     @Override
     public void depositMoney(double amount, String currency) {
-        double amountInWalletCurrency = CurrencyExchange.convert(amount, currency, this.currency);
-        balance += amountInWalletCurrency;
-        System.out.println("После пополнения на " + amount + " " + currency + ", банковского счета: " + balance + " " + this.currency);
-
+        double amountInEUR = CurrencyExchange.convert(amount, currency, this.currency);
+        balance += amountInEUR;
+        System.out.println("Внесено " + amountInEUR + " " + this.currency);
     }
 
     @Override
