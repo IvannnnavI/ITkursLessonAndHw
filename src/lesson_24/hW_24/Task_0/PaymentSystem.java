@@ -6,7 +6,9 @@ package lesson_24.hW_24.Task_0;
  */
 
 public interface PaymentSystem {
-    void transferMoney(double amount);
-    void withdrawMoney(double amount);
-    double checkBalance();
+    void transferMoney(PaymentSystem recipient, double amount,String currency);
+
+    void withdrawMoney(double amount, String currency);
+    void depositMoney(double amount,String currency);
+    double checkBalance(String currency);
 }
