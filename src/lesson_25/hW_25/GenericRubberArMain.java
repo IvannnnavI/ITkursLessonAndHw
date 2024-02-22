@@ -1,50 +1,50 @@
 package lesson_25.hW_25;
 
+import java.util.Arrays;
+
 public class GenericRubberArMain {
     public static void main(String[] args) {
         // Создаем экземпляр RubberArrayHw для хранения Integer
-        RubberArrayHw<Integer> rubberArrayHw = new RubberArrayHw<>();
+        RubberArrayHw<Integer> integerList = new RubberArrayHw<>();
+        MyList<String> stringList = new RubberArrayHw<>();
+        MyList<Number> numberList = new RubberArrayHw<>();
 
-        // Добавляем элементы
-        rubberArrayHw.add(1);
-        rubberArrayHw.add(2);
-        rubberArrayHw.add(3);
-        System.out.println("После добавления элементов: " + rubberArrayHw);
+        System.out.println("stringList.contains(hello): " + stringList.contains("hello")); // false
+        System.out.println("stringList.contains(Hello): " + stringList.contains("Hello")); // true
 
-        // Добавляем несколько элементов одновременно
-        rubberArrayHw.addAll(4, 5, 6);
-        System.out.println("После добавления нескольких элементов: " + rubberArrayHw);
+        integerList.addAll(1, 2, 3, 4, 5, 6, 7);
+        System.out.println(integerList);
 
-        // Проверяем размер
-        System.out.println("Размер: " + rubberArrayHw.size());
+        Object[] array = integerList.toArray(); //- не работает. Надо чинить
+        System.out.println(Arrays.toString(array));
+        System.out.println(array.length);
 
-        // Получаем элемент по индексу
-        System.out.println("Элемент с индексом 2: " + rubberArrayHw.get(2));
+        System.out.println("\n ================== \n");
+        // удалить по значению
+        System.out.println(integerList.remove(Integer.valueOf(30)));
+        System.out.println(integerList);
 
-        // Устанавливаем значение элемента по индексу
-        rubberArrayHw.set(2, 10);
-        System.out.println("После установки элемента с индексом 2 на 10: " + rubberArrayHw);
+        //удалить по индексу
+        System.out.println(integerList.remove(1));
+        System.out.println(integerList);
 
-        // Проверяем наличие элемента
-        System.out.println("Содержит ли 10: " + rubberArrayHw.contains(10));
-        System.out.println("Содержит ли 3: " + rubberArrayHw.contains(3));
+        System.out.println("numberList.isEmpty(): " + numberList.isEmpty());
+        System.out.println("stringList.isEmpty(): " + stringList.isEmpty());
 
-        // Поиск индекса элемента
-        System.out.println("Индекс элемента 10: " + rubberArrayHw.indexOf(10));
-        System.out.println("Последний индекс элемента 10: " + rubberArrayHw.lastIndexOf(10));
+        numberList.addAll(15, 5.6, -100000, 0, 5.7, 5.7F);
+        System.out.println(numberList);
 
-        // Удаление элемента по значению и по индексу
-        rubberArrayHw.remove(Integer.valueOf(10));
-        System.out.println("После удаления элемента 10: " + rubberArrayHw);
-        rubberArrayHw.remove(1); // Удаляем элемент на позиции 1 (второй элемент)
-        System.out.println("После удаления элемента с индексом 1: " + rubberArrayHw);
+        Object[] strings = stringList.toArray();
+        System.out.println(strings);
 
-        // Проверяем, пустой ли массив
-        System.out.println("Пустой ли массив: " + rubberArrayHw.isEmpty());
 
-        // Преобразуем в массив
-        Integer[] array = rubberArrayHw.toArray();
-        System.out.println("Преобразование в массив: " + java.util.Arrays.toString(array));
+       Integer[] arrayInt = integerList.toArray(Integer.class);
+        System.out.println(Arrays.toString(arrayInt));
+
+
+
+
+
     }
 
 
