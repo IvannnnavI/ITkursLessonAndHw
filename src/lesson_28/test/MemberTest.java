@@ -49,4 +49,27 @@ public class MemberTest {
 
         );
     }
+    @Test
+    void TestValidPasswordSet(){
+        String validPassword = "qwerty1Q$";
+        member.setPassword(validPassword);
+        Assertions.assertEquals(validPassword,member.getPassword(),"Валидный пароль успешно установлен");
+    }
+    @ParameterizedTest
+    @MethodSource("invalidPasswordData")
+    void testSetInvalidPassword(String password){
+        member.setPassword(password);
+        Assertions.assertNotEquals(password,member.getPassword(),"Невалидный пароль не должен быть установлен.");
+    }
+    static Stream<String> invalidPasswordData(){
+        return Stream.of(
+                "short",
+                "nouppercase1!",
+                "NOLOWERCASE1!",
+                "NoNumbers!",
+                "NoSpecialchar1",
+                "aaaaaaa1A!"
+        );
+    }
+
 }
