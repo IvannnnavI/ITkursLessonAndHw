@@ -1,12 +1,12 @@
-package lesson_27.persons;
+package lesson_28;
 
-public class Person {
+public class Member {
     private String email;
     private String password;
 
-    public Person(String email, String password) {
+    public Member(String email, String password) {
         setEmail(email);
-        this.password = password;
+        setPassword(password);
     }
 
     @Override
@@ -42,13 +42,23 @@ public class Person {
 
         // 1. @ |
         int indexAt = email.indexOf('@');
-        if (indexAt <= 0 || indexAt != email.lastIndexOf('@')) return false;
+        if (indexAt <= 0 || indexAt != email.lastIndexOf('@'))
+        {
+            System.out.println("1");
+            return false;
+        }
         // должна быть точка после собаки.
         int firstdotafterAt = email.indexOf('.', indexAt);
-        if (firstdotafterAt == -1 || firstdotafterAt != indexAt + 1) return false;
+        if (firstdotafterAt == -1 || firstdotafterAt == indexAt + 1) {
+            System.out.println("2");
+            return false;
+        }
 
         // lastdort
-        if (email.lastIndexOf('.') >= email.length() - 2) return false;
+        if (email.lastIndexOf('.') >= email.length() - 2) {
+            System.out.println("3");
+            return false;
+        }
 
         boolean isCharAlphabetic = Character.isAlphabetic(email.charAt(0));
         if (!isCharAlphabetic) return false;
@@ -57,7 +67,7 @@ public class Person {
             char c = email.charAt(i);
             boolean isCharValid = (Character.isAlphabetic(c) || Character.isDigit(c) || c == '-' || c == '_' || c == '.' || c == '@');
 
-            if (isCharValid) return false;
+            if (!isCharValid) return false;
 
         }
         return true;
@@ -105,6 +115,9 @@ public class Person {
 
 
     public void setPassword(String password) {
-        this.password = password;
+        if (isPasswordValid(password)) {
+            this.password = password;
+        }
     }
 }
+

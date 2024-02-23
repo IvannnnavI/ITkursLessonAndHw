@@ -1,9 +1,11 @@
 package lesson_27.persons;
 
+import lesson_28.Member;
+
 public class PersonApp {
     public static void main(String[] args) {
-        Person person = new Person("email","password");
-        System.out.println(person);
+        Member member = new Member("email","password");
+        System.out.println(member);
 
 
     }
