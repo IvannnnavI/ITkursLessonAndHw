@@ -1,8 +1,7 @@
 package lesson_27.generic;
 
-import lesson_25.hW_25.MyList;
+import util.MyList;
 import lesson_25.hW_25.RubberArrayHw;
-import lesson_27.generic.GenericMethods;
 
 public class TestExtends {
     public static void main(String[] args) {

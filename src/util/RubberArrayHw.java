@@ -1,6 +1,4 @@
-package lesson_25.hW_25;
-
-import util.MyList;
+package util;
 
 import java.lang.reflect.Array;
 

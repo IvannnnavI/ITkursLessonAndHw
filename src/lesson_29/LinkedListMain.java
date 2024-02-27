@@ -1,6 +1,6 @@
 package lesson_29;
 
-import lesson_28.MyLinkedList;
+import util.MyLinkedList;
 
 public class LinkedListMain {
     public static void main(String[] args) {

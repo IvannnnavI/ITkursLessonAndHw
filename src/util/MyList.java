@@ -1,4 +1,4 @@
-package lesson_25.hW_25;
+package util;
 
 public interface MyList<T> {
 

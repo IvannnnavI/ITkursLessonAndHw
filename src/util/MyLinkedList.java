@@ -1,7 +1,4 @@
-package lesson_28;
-
-import lesson_25.hW_25.MyList;
-import lesson_29.MyQueue;
+package util;
 
 import java.lang.reflect.Array;
 
@@ -159,7 +156,6 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
             cursor = cursor.next;
 
         }
-
         return result;
     }
 

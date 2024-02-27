@@ -1,5 +1,7 @@
 package lesson_25.hW_25;
 
+import util.MyList;
+
 import java.util.Arrays;
 
 public class GenericRubberArMain {

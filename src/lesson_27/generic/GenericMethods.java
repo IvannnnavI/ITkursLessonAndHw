@@ -1,7 +1,5 @@
 package lesson_27.generic;
 
-import lesson_25.hW_25.MyList;
-
 public class GenericMethods {
 
     // Ограничение сверху. Ограничиваем диапазон принимаемых данных.

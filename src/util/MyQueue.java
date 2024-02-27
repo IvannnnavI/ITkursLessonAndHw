@@ -1,4 +1,4 @@
-package lesson_29;
+package util;
 
 public interface MyQueue <T> {
     void addLast(T value); // добавить в конец
