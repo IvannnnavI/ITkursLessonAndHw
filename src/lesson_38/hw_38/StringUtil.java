@@ -16,7 +16,8 @@ public class StringUtil {
     public static void main(String[] args) {
         String testString = "Тестовая строка для удаления слов, которые повторяются. \"строка\" для удаления!";
         System.out.println("Строка до использования метода->[" + testString+" ]");
-        System.out.println("Строка после использования метода->"+ StringUtil.getUniqueSortedWords(testString));
+        System.out.println("Строка после использования метода 1->"+ StringUtil.getUniqueSortedWords(testString));
+        System.out.println("Строка после использования метода 2->"+ StringUtil.getUniqueSortedWords2(testString));
     }
 
     public static List<String> getUniqueSortedWords(String testString) {
@@ -41,4 +42,29 @@ public class StringUtil {
         wordsList.sort(Comparator.comparingInt(String::length).thenComparing(String::compareToIgnoreCase));
         return wordsList;
     }
+    public static TreeSet<String> getUniqueSortedWords2(String testString) {
+        if (testString == null || testString.isEmpty()) {
+            return new TreeSet<>();
+        }
+
+        Comparator<String> lengthThenNaturalOrder = Comparator.comparingInt(String::length).thenComparing(Comparator.naturalOrder());
+        TreeSet<String> words = new TreeSet<>(lengthThenNaturalOrder);
+
+        StringBuilder wordBuilder = new StringBuilder();
+        for (char c : testString.toCharArray()) {
+            if (Character.isLetter(c)) {
+                wordBuilder.append(c);
+            } else if (wordBuilder.length() > 0) {
+                words.add(wordBuilder.toString());
+                wordBuilder.setLength(0);
+            }
+        }
+
+        if (wordBuilder.length() > 0) {
+            words.add(wordBuilder.toString());
+        }
+
+        return words;
+    }
+
 }

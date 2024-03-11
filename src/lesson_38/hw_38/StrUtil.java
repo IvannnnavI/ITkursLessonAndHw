@@ -12,6 +12,7 @@ public static void main(String[] args) {
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class StrUtil {
     public static void main(String[] args) {
@@ -19,6 +20,7 @@ public class StrUtil {
         System.out.println("Исходная строка: " + string);
         System.out.println("Первый неповторяющийся символ в строке метод 1: " + StrUtil.getFirstUniqueChar(string));
         System.out.println("Первый неповторяющийся символ в строке метод 2: " + StrUtil.getFirstUniqueChar2(string));
+        System.out.println("Первый неповторяющийся символ в строке метод 3: " + StrUtil.getFirstUniqueChar3(string));
 
     }
 
@@ -48,6 +50,18 @@ public class StrUtil {
         }
         for (char c : str.toCharArray()) {
             if (!repeatChar.contains(c)) {
+                return c;
+            }
+        }
+        return '0';
+    }
+    public static char getFirstUniqueChar3(String str) {
+        TreeSet<Character> characterTreeSet = new TreeSet<>();
+        for (char c : str.toCharArray()) {
+            characterTreeSet.add(c);
+        }
+        for (char c : characterTreeSet) {
+            if (str.indexOf(c) == str.lastIndexOf(c)) {
                 return c;
             }
         }
