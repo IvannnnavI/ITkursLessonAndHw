@@ -1,7 +1,6 @@
 package lesson_38.hw_38;
 
 import java.util.*;
-
 /*
 Напишите метод, принимающий строку и возвращающий Список ее слов без повторений, отсортированный в порядке увеличения длин слов.
 Если строки имеют одинаковую длину - сортировать в естественном порядке
@@ -58,6 +57,7 @@ public class StringUtil {
                 words.add(wordBuilder.toString());
                 wordBuilder.setLength(0);
             }
+
         }
 
         if (wordBuilder.length() > 0) {
@@ -66,5 +66,6 @@ public class StringUtil {
 
         return words;
     }
+
 
 }
