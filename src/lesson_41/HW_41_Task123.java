@@ -34,11 +34,11 @@ public class HW_41_Task123 {
         int maxLength = strings.stream()
                 .mapToInt(String::length)
                 .max()
-                .orElse(-1);  // Находим максимальную длину строки в списке
+                .orElse(-1);
 
         List<String> longestStrings = strings.stream()
                 .filter(s -> s.length() == maxLength)
-                .collect(Collectors.toList());  // Собираем все строки этой длины
+                .collect(Collectors.toList());
 
         if (longestStrings.size() > 1) {
             System.out.println("Строки с максимальной длиной (" + maxLength + " символов): " + longestStrings);
