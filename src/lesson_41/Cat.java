@@ -1,4 +1,4 @@
-package lesson_40;
+package lesson_41;
 
 import java.util.Objects;
 
@@ -13,7 +13,7 @@ public class Cat {
     }
 
     public String getName() {
-        System.out.println("Call getName");
+        // System.out.println("Call getName");
         return name;
     }
 

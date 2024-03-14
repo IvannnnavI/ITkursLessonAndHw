@@ -56,5 +56,9 @@ public class Hw_40_Task123 {
         BiConsumer<String, String> print = (k, v) -> System.out.println(k + " = " + v);
         print.accept(key, value);
 
+
+
     }
+    // BiPredicate<T,U> принимает 2 аргумента, возращает логическое значение (boolean)
+
 }
