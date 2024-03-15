@@ -30,17 +30,23 @@ public class Hw_42_Task1_3 {
         });
 
         System.out.println("================================================================================");
-        // Вычисляем среднюю зарплату для каждого отдела
+        //  Вычисляем среднюю зарплату для каждого отдела
         Map<String, Double> averageSalaries = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.averagingDouble(Employee::getSalary)));
-        averageSalaries.forEach((department, average) -> System.out.println("Средняя зарплата в отделе " + department + ": " + average));
 
-        // Находим отдел с максимальной средней зарплатой
-        String departmentWithMaxAverageSalary = averageSalaries.entrySet().stream()
-                .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getKey)
+        //  Находим максимальную среднюю зарплату
+        double maxAverageSalary = averageSalaries.values().stream()
+                .max(Double::compare)
+                .orElse(Double.MIN_VALUE);
+
+        //  Определяем отдел с максимальной средней зарплатой
+        String departmentWithMaxAverageSalary = averageSalaries.keySet().stream()
+                .filter(department -> averageSalaries.get(department).equals(maxAverageSalary))
+                .findFirst()
                 .orElse("Отдел не найден");
 
+
+        averageSalaries.forEach((department, average) -> System.out.println(department + ": " + average));
         System.out.println("Отдел с максимальной средней зарплатой: " + departmentWithMaxAverageSalary);
     }
 
