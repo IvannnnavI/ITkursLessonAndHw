@@ -48,4 +48,55 @@ public class EmailValidator {
         // All checks passed, nowhere did the method return false ->
 
     }
+    public static void isPasswordValid (String password) throws PasswordValidateException {
+        if (password == null || password.length() < 8){
+            throw new PasswordValidateException("Код должен содержать минимум 8 символов");
+        }
+        boolean isLowerCase = false;
+        boolean isUpperCase = false;
+        boolean isDigit = false;
+        boolean isSpecialSymbol = false;
+
+        // альтернативный вариант запоминания
+        boolean[] res = new boolean[4]; // false, false, false, false
+
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+
+            if (Character.isDigit(c)) {
+                isDigit = true;
+//                res[0] = true;
+                continue;
+            }
+
+            if (Character.isLowerCase(c)) {
+                isLowerCase = true;
+//                res[1] = true;
+                continue;
+            }
+
+            if (Character.isUpperCase(c)) {
+                isUpperCase = true;
+                continue;
+            }
+
+            if ("!%$@&*()[]".indexOf(c) >= 0) {
+                isSpecialSymbol = true;
+                continue;
+            }
+        }
+
+
+        if (!(isLowerCase && isUpperCase && isDigit && isSpecialSymbol)) {
+            throw new
+                    PasswordValidateException("Пароль должен содержать хотя бы одну строчную букву," +
+                    " одну прописную букву, одну цифру и один специальный символ.");}
+
+    }
+
+    public static class PasswordValidateException extends Exception{
+        public PasswordValidateException (String message){
+            super(message);
+        }
+    }
 }
