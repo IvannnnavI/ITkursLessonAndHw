@@ -1,6 +1,6 @@
 package lesson_43;
 
-public class EmailValidator {
+public class DataValidator {
 
     // ключевое слово Throw для явного выброса исключения (порождения , иниализации исключения.)
     public static void validate(String email) throws EmailValidateException {
@@ -87,11 +87,18 @@ public class EmailValidator {
         }
 
 
-        if (!(isLowerCase && isUpperCase && isDigit && isSpecialSymbol)) {
-            throw new
-                    PasswordValidateException("Пароль должен содержать хотя бы одну строчную букву," +
-                    " одну прописную букву, одну цифру и один специальный символ.");}
-
+        if (!isLowerCase) {
+            throw new PasswordValidateException("Пароль должен содержать хотя бы одну строчную букву");
+        }
+        if (!isUpperCase) {
+            throw new PasswordValidateException("Пароль должен содержать хотя бы одну заглавную букву");
+        }
+        if (!isDigit) {
+            throw new PasswordValidateException("Пароль должен содержать хотя бы одну цифру");
+        }
+        if (!isSpecialSymbol) {
+            throw new PasswordValidateException("Пароль должен содержать хотя бы один специальный символ");
+        }
     }
 
     public static class PasswordValidateException extends Exception{
